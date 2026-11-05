@@ -30,4 +30,3 @@ npx serve dist
 ## License
 
 MIT
-

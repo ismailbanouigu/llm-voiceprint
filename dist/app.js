@@ -162,4 +162,3 @@ connect.addEventListener("change", () => toast(connect.apiKey ? "Wallet connecte
 $("#textInput").value = SAMPLE;
 $("#textInput").dispatchEvent(new Event("input"));
 renderResult(localAnalyze(SAMPLE), SAMPLE, "LOCAL HEURISTIC", false);
-

@@ -21,4 +21,3 @@ test("ships an offline specimen and rewrite view", () => {
   assert.match(js, /In today'?s rapidly evolving digital landscape/);
   assert.match(html, /After Voiceprint/);
 });
-
