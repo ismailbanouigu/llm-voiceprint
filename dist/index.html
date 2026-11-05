@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f2eadb" />
+    <meta name="description" content="Voiceprint reveals the recognizable LLM voice and rewrites text with a more specific human cadence." />
+    <title>Voiceprint — Find the LLM voice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Libre+Caslon+Text:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./config.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@pollinations/ui@0.1.0-alpha.20/dist/connect.js"></script>
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#studio">Skip to studio</a>
+    <header>
+      <a class="logo" href="#top"><span>V</span> Voiceprint</a>
+      <nav><a href="#studio">Studio</a><a href="#markers">The markers</a></nav>
+      <div class="wallet"><small>YOUR POLLEN</small><polli-connect id="polliConnect" budget="1.5" expiry="7" models="openai/gpt-5.4-nano" hide-buy-pollen menu-links='[{"label":"Quest #19180","href":"https://github.com/pollinations/pollinations/issues/19180","icon":"app"}]'></polli-connect></div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="issue">ISSUE 01 / THE LLM VOICE</p>
+        <h1>Every model has<br />a <em>tell.</em></h1>
+        <div class="hero-bottom">
+          <p>Paste a passage. Voiceprint maps the habits that make language feel model-written—then rewrites it without sanding away the meaning.</p>
+          <a class="arrow-link" href="#studio">Open the studio <span>↘</span></a>
+        </div>
+        <div class="proof-strip" aria-label="Common LLM voice markers">
+          <span>“It’s not just X—it’s Y”</span><span>Three-part lists</span><span>Generic scene-setting</span><span>Polished sameness</span><span>Em dash cadence</span>
+        </div>
+      </section>
+
+      <section class="studio" id="studio">
+        <div class="section-title"><p>01 / INPUT</p><h2>Put the prose<br />under glass.</h2></div>
+        <div class="editor-grid">
+          <article class="editor-card">
+            <div class="card-head"><span>TEXT SAMPLE</span><button id="loadSample" type="button">Load specimen</button></div>
+            <textarea id="textInput" maxlength="5000" aria-label="Text to analyze" placeholder="Paste 80–800 words here…"></textarea>
+            <div class="editor-foot"><span id="wordCount">0 words</span><span>Nothing is stored</span></div>
+          </article>
+          <aside class="brief-card">
+            <div><span class="number">A</span><h3>Choose the rewrite pressure</h3></div>
+            <label><input type="radio" name="mode" value="plain" checked /><span><b>Plainspoken</b><small>Direct, ordinary, no performance</small></span></label>
+            <label><input type="radio" name="mode" value="personal" /><span><b>Personal</b><small>Specific, uneven, lived-in</small></span></label>
+            <label><input type="radio" name="mode" value="editorial" /><span><b>Editorial</b><small>Sharp argument, disciplined rhythm</small></span></label>
+            <button class="primary" id="analyzeButton" type="button">Analyze + rewrite <span>→</span></button>
+            <button class="secondary" id="localButton" type="button">Run the zero-Pollen scan</button>
+            <p>AI analysis uses your temporary Pollinations key. The local scan never leaves your browser.</p>
+          </aside>
+        </div>
+
+        <div class="loading" id="loading" hidden><i></i><div><strong>Reading for rhythm, not truth…</strong><span>Separating useful clarity from generic polish.</span></div></div>
+
+        <section class="results" id="results" hidden aria-live="polite">
+          <div class="result-head"><p>02 / VOICEPRINT</p><h2 id="verdict">The prose is polished past the point of personality.</h2><div class="score"><strong id="overallScore">68</strong><span>/ 100<br />LLM voice</span></div></div>
+          <div class="fingerprint">
+            <article class="radar-card">
+              <div class="card-head"><span>VOICE FINGERPRINT</span><b id="analysisType">AI REVIEW</b></div>
+              <svg id="radar" viewBox="0 0 520 420" role="img" aria-label="Radar chart of writing voice markers"></svg>
+            </article>
+            <article class="markers-card">
+              <div class="card-head"><span>STRONGEST TELLS</span><button id="showAll" type="button">Show all</button></div>
+              <div id="markerList"></div>
+            </article>
+          </div>
+
+          <div class="rewrite-card" id="rewriteCard">
+            <div class="card-head"><span>03 / REWRITE</span><button id="copyRewrite" type="button">Copy rewrite</button></div>
+            <div class="rewrite-grid"><div><h3>Original</h3><p id="originalText"></p></div><div class="after"><h3>After Voiceprint</h3><p id="rewrittenText"></p></div></div>
+            <ul id="editList"></ul>
+          </div>
+        </section>
+      </section>
+
+      <section class="markers" id="markers">
+        <div class="section-title"><p>FIELD GUIDE</p><h2>The voice is not one phrase.<br />It is the pattern between them.</h2></div>
+        <div class="field-grid">
+          <article><b>01</b><h3>Framing before substance</h3><p>“In today’s rapidly evolving landscape” arrives before anything concrete does.</p></article>
+          <article><b>02</b><h3>Symmetrical contrast</h3><p>“Not merely a tool, but a catalyst” packages nuance into a reusable shape.</p></article>
+          <article><b>03</b><h3>Cadence without surprise</h3><p>Every sentence is balanced, helpful, and roughly the same emotional temperature.</p></article>
+          <article><b>04</b><h3>Abstract nouns doing work</h3><p>Impact, innovation, transformation, and potential replace people and observable acts.</p></article>
+        </div>
+        <p class="note">A marker is evidence, not proof. Humans use these habits too. Voiceprint critiques style; it does not claim to detect authorship.</p>
+      </section>
+    </main>
+
+    <footer><div class="logo"><span>V</span> Voiceprint</div><p>Built for Pollinations Quest #19180 · Style analysis, not authorship detection.</p><a href="https://pollinations.ai/?ref=badge" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg" alt="Made with pollinations.ai" /></a></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
+
